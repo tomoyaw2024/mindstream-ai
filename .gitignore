@@ -73,3 +73,6 @@ docs/mindstream-ai-hackathon-article.md
 
 # Build artifacts
 *.zip
+
+# Server logs
+functions/server.log

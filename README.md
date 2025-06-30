@@ -2,7 +2,16 @@
 
 YouTube医療動画のコメントを整理し、視聴者の体験談を共有しやすくするChrome拡張機能
 
+**🏆 第2回 Google Cloud AI Agent Hackathon 2025 提出作品**
+
 🚀 **[クイックスタート](QUICKSTART.md)** | 📊 **[プロジェクトステータス](PROJECT_STATUS.md)** | 📝 **[開発ログ](docs/development-log.md)** | 🔐 **[セキュリティガイド](docs/security-guide.md)**
+
+## 📌 ハッカソン提出情報
+
+- **リポジトリ**: https://github.com/tomoyaw2024/mindstream-ai
+- **リリース**: https://github.com/tomoyaw2024/mindstream-ai/releases/tag/v0.1.1
+- **Chrome拡張機能**: [ダウンロード (v0.1.1)](https://github.com/tomoyaw2024/mindstream-ai/releases/download/v0.1.1/mindstream-ai-v0.1.1.zip)
+- **提出日**: 2025年6月30日
 
 ## 🎯 概要
 
@@ -32,13 +41,36 @@ Google Cloud Functionsを活用し、分析結果のキャッシュと統計情�
 - **Gemini API**: コメントの自動分類
 - **YouTube Data API**: コメント取得
 
+## 🚧 デプロイメント状況
+
+### Google Cloud Functions 実装
+
+本プロジェクトでは、ハッカソンの要件である「Google Cloud アプリケーション関連サービス」として Cloud Functions を実装しました：
+
+- ✅ **実装完了**: キャッシュAPI、統計情報API、ヘルスチェックAPI
+- ✅ **ローカルテスト成功**: すべてのAPIエンドポイントが正常動作を確認
+- ❌ **GCPデプロイ**: 組織ポリシー制限によりGCPプロジェクトへのデプロイ不可
+
+詳細は [ローカルテスト結果](functions/local-test-results.md) をご確認ください。
+
+### ローカルでの動作確認
+
+```bash
+# Cloud Functions をローカルで実行
+cd functions
+npx @google-cloud/functions-framework --target=mindstreamApi --signature-type=http --port=8080
+
+# APIの動作確認
+curl http://localhost:8080/api/health
+```
+
 ## 🚀 インストール方法
 
 ### 開発版のインストール
 
 1. このリポジトリをクローン
 ```bash
-git clone https://github.com/yourusername/mindstream-ai.git
+git clone https://github.com/tomoyaw2024/mindstream-ai.git
 cd mindstream-ai
 ```
 
@@ -106,7 +138,7 @@ MIT License - 詳細は[LICENSE](LICENSE)ファイルを参照
 
 ## 📞 お問い合わせ
 
-- Issue: [GitHub Issues](https://github.com/yourusername/mindstream-ai/issues)
+- Issue: [GitHub Issues](https://github.com/tomoyaw2024/mindstream-ai/issues)
 - Email: support@mindstream-ai.example.com
 
 ---

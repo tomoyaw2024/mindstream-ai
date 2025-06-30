@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+.gcloudignore
+.gcloudignore.bak
+test-*.js
+simple.js
+*.log
+.DS_Store
+.git
+.gitignore
