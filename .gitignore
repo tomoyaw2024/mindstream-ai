@@ -57,3 +57,19 @@ temp/
 # Personal notes
 personal-notes.md
 TODO.personal.md
+
+# Claude-specific files
+.claude/
+CLAUDE.md
+PROJECT_STATUS.md
+
+# Development files
+docs/development-log.md
+src/background/service-worker.template.js
+demo-script.md
+zenn-article.md
+docs/zenn-article-notes.md
+docs/mindstream-ai-hackathon-article.md
+
+# Build artifacts
+*.zip
