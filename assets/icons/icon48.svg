@@ -1,0 +1,32 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="128" height="128" rx="24" fill="#2C5282"/>
+  
+  <!-- 脳のアイコン（シンプル化） -->
+  <g transform="translate(64, 64)">
+    <!-- 左脳 -->
+    <path d="M -20 -15 C -35 -15, -40 -5, -40 5 C -40 15, -35 25, -20 25 C -15 25, -10 20, -10 15 L -10 -5 C -10 -10, -15 -15, -20 -15" 
+          fill="white" opacity="0.9"/>
+    
+    <!-- 右脳 -->
+    <path d="M 20 -15 C 35 -15, 40 -5, 40 5 C 40 15, 35 25, 20 25 C 15 25, 10 20, 10 15 L 10 -5 C 10 -10, 15 -15, 20 -15" 
+          fill="white" opacity="0.9"/>
+    
+    <!-- 中央の接続部 -->
+    <rect x="-10" y="-5" width="20" height="20" fill="white" opacity="0.9"/>
+    
+    <!-- 神経回路を表す線 -->
+    <circle cx="-25" cy="0" r="3" fill="#2C5282"/>
+    <circle cx="25" cy="0" r="3" fill="#2C5282"/>
+    <circle cx="0" cy="-10" r="3" fill="#2C5282"/>
+    <circle cx="0" cy="10" r="3" fill="#2C5282"/>
+    
+    <!-- 接続線 -->
+    <path d="M -25 0 L -10 0 M 25 0 L 10 0 M 0 -10 L 0 -5 M 0 10 L 0 5" 
+          stroke="#2C5282" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- MindStreamのMを追加 -->
+  <text x="64" y="90" font-family="Arial, sans-serif" font-size="20" font-weight="bold" 
+        fill="white" text-anchor="middle" opacity="0.8">M</text>
+</svg>

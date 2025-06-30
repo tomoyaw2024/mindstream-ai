@@ -1,0 +1,21 @@
+{
+  "name": "mindstream-api",
+  "version": "1.0.0",
+  "description": "MindStream AI Cloud Functions backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gcloud functions deploy mindstream-api --runtime nodejs20 --trigger-http --allow-unauthenticated --region=asia-northeast1"
+  },
+  "author": "MindStream AI Team",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/firestore": "^7.1.0",
+    "@google-cloud/functions-framework": "^3.3.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "@google-cloud/functions-framework": "^3.3.0"
+  }
+}

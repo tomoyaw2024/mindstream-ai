@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindStream AI Settings</title>
+  <style>
+    body {
+      width: 300px;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f7fafc;
+    }
+    
+    .header {
+      background: #2C5282;
+      color: white;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .header h1 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    
+    .content {
+      padding: 16px;
+    }
+    
+    .status {
+      background: white;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .status-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    
+    .status-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .status-label {
+      color: #4a5568;
+      font-size: 14px;
+    }
+    
+    .status-value {
+      font-weight: 600;
+      color: #2d3748;
+    }
+    
+    .status-value.active {
+      color: #38a169;
+    }
+    
+    .status-value.inactive {
+      color: #e53e3e;
+    }
+    
+    .settings {
+      background: white;
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .setting-item {
+      margin-bottom: 12px;
+    }
+    
+    .setting-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .setting-label {
+      display: block;
+      color: #4a5568;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    
+    .toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .toggle-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      background: #cbd5e0;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .toggle-switch.active {
+      background: #38a169;
+    }
+    
+    .toggle-slider {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    
+    .toggle-switch.active .toggle-slider {
+      transform: translateX(20px);
+    }
+    
+    .footer {
+      padding: 16px;
+      text-align: center;
+      font-size: 12px;
+      color: #718096;
+    }
+    
+    .footer a {
+      color: #2c5282;
+      text-decoration: none;
+    }
+    
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    
+    .button {
+      width: 100%;
+      padding: 10px;
+      background: #2c5282;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+    
+    .button:hover {
+      background: #2a4e7c;
+    }
+    
+    .button:disabled {
+      background: #a0aec0;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span style="font-size: 24px;">🧠</span>
+    <h1>MindStream AI</h1>
+  </div>
+  
+  <div class="content">
+    <div class="status">
+      <div class="status-item">
+        <span class="status-label">状態</span>
+        <span class="status-value active" id="status">有効</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">分析済み動画</span>
+        <span class="status-value" id="analyzed-count">0</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">キャッシュサイズ</span>
+        <span class="status-value" id="cache-size">0 KB</span>
+      </div>
+    </div>
+    
+    <div class="settings">
+      <div class="setting-item">
+        <label class="setting-label">自動分析</label>
+        <div class="toggle">
+          <div class="toggle-switch active" id="auto-analyze">
+            <div class="toggle-slider"></div>
+          </div>
+          <span style="font-size: 14px;">YouTube動画を開いた時に自動で分析</span>
+        </div>
+      </div>
+      
+      <div class="setting-item">
+        <label class="setting-label">通知</label>
+        <div class="toggle">
+          <div class="toggle-switch" id="notifications">
+            <div class="toggle-slider"></div>
+          </div>
+          <span style="font-size: 14px;">重要なコメントを通知</span>
+        </div>
+      </div>
+      
+      <button class="button" id="clear-cache">キャッシュをクリア</button>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <p>医療情報の判断は医師にご相談ください</p>
+    <p><a href="#" id="privacy-link">プライバシーポリシー</a></p>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

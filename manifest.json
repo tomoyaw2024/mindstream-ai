@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "MindStream AI - YouTube医療動画コメント分析",
+  "version": "0.1.0",
+  "description": "YouTube医療動画のコメントを整理し、視聴者の体験談を共有しやすくするツール",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://generativelanguage.googleapis.com/*",
+    "https://asia-northeast1-mindstream-ai-hackathon.cloudfunctions.net/*",
+    "http://localhost:8080/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/watch*"],
+      "js": ["src/content/content.js"],
+      "css": ["src/content/styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js"
+  },
+  "action": {
+    "default_popup": "src/popup/popup.html"
+    // アイコンは開発中のため一時的に無効化
+    // "default_icon": {
+    //   "16": "assets/icons/icon16.png",
+    //   "48": "assets/icons/icon48.png",
+    //   "128": "assets/icons/icon128.png"
+    // }
+  }
+  // アイコンは開発中のため一時的に無効化
+  // PNG生成後に有効化してください
+  // "icons": {
+  //   "16": "assets/icons/icon16.png",
+  //   "48": "assets/icons/icon48.png",
+  //   "128": "assets/icons/icon128.png"
+  // }
+}

@@ -1,0 +1,106 @@
+/* MindStream AI - Content Styles */
+
+/* アニメーション定義 */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* パネルのアニメーション */
+#mindstream-panel {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Shadow DOM外のスタイル（最小限） */
+#mindstream-panel {
+  position: fixed;
+  z-index: 9999;
+}
+
+/* ローディングアニメーション */
+.mindstream-loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #2C5282;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 1024px) {
+  #mindstream-panel {
+    right: 10px !important;
+    width: 300px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #mindstream-panel {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    width: 100% !important;
+    max-height: 50vh !important;
+    border-radius: 20px 20px 0 0 !important;
+  }
+}
+
+/* アクセシビリティ対応 */
+@media (prefers-reduced-motion: reduce) {
+  #mindstream-panel,
+  .mindstream-loading {
+    animation: none !important;
+  }
+  
+  * {
+    transition: none !important;
+  }
+}
+
+/* ダークモード対応（将来実装用） */
+@media (prefers-color-scheme: dark) {
+  /* Shadow DOM内でダークモードスタイルを適用 */
+}
+
+/* 印刷時はパネルを非表示 */
+@media print {
+  #mindstream-panel {
+    display: none !important;
+  }
+}

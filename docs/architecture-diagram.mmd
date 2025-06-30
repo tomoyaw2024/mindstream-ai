@@ -1,0 +1,71 @@
+graph TB
+    %% ユーザー環境
+    subgraph "ユーザー環境"
+        User[YouTube視聴者<br/>精神疾患患者・家族<br/>66万人]
+        Browser[Chrome Browser]
+        User --> Browser
+    end
+    
+    %% Chrome拡張機能の詳細
+    subgraph "Chrome拡張機能 (MindStream AI)"
+        ContentScript[Content Script<br/>YouTubeページ注入]
+        ServiceWorker[Service Worker<br/>バックグラウンド処理]
+        PopupUI[Popup UI<br/>設定画面]
+        ShadowDOM[Shadow DOM Panel<br/>分析結果表示]
+        LocalStorage[(chrome.storage.local<br/>ローカルキャッシュ)]
+        
+        ContentScript --> ServiceWorker
+        ServiceWorker --> PopupUI
+        ContentScript --> ShadowDOM
+        ServiceWorker --> LocalStorage
+    end
+    
+    %% 外部API
+    subgraph "External APIs"
+        YouTubeAPI[YouTube Data API v3<br/>コメント取得<br/>10,000ユニット/日]
+        GeminiAPI[Gemini 2.5 Flash API<br/>AIクラスタリング<br/>15 RPM制限]
+    end
+    
+    %% Google Cloud Platform
+    subgraph "Google Cloud Platform"
+        CloudFunctions[Cloud Functions<br/>Node.js 20<br/>asia-northeast1]
+        Firestore[(Firestore<br/>キャッシュDB<br/>24時間TTL)]
+        
+        %% Cloud Functions内部
+        subgraph "API Endpoints"
+            CacheAPI[/api/cache<br/>分析結果キャッシュ]
+            StatsAPI[/api/stats<br/>統計情報]
+            HealthAPI[/api/health<br/>ヘルスチェック]
+        end
+        
+        CloudFunctions --> Firestore
+        CacheAPI --> Firestore
+        StatsAPI --> Firestore
+    end
+    
+    %% データフロー
+    Browser --> ContentScript
+    ServiceWorker --> YouTubeAPI
+    ServiceWorker --> GeminiAPI
+    ServiceWorker --> CloudFunctions
+    ShadowDOM --> User
+    
+    %% 処理フロー（点線）
+    ServiceWorker -.->|1. キャッシュ確認| CloudFunctions
+    CloudFunctions -.->|2. キャッシュヒット| ServiceWorker
+    ServiceWorker -.->|3. キャッシュミス時| YouTubeAPI
+    YouTubeAPI -.->|4. コメント取得| ServiceWorker
+    ServiceWorker -.->|5. AI分析| GeminiAPI
+    GeminiAPI -.->|6. クラスタリング結果| ServiceWorker
+    ServiceWorker -.->|7. 結果保存| CloudFunctions
+    
+    %% スタイリング
+    classDef userStyle fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef chromeStyle fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef apiStyle fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef gcpStyle fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+    
+    class User,Browser userStyle
+    class ContentScript,ServiceWorker,PopupUI,ShadowDOM,LocalStorage chromeStyle
+    class YouTubeAPI,GeminiAPI apiStyle
+    class CloudFunctions,Firestore,CacheAPI,StatsAPI,HealthAPI gcpStyle

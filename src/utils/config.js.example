@@ -1,0 +1,36 @@
+// API設定の例
+// このファイルをconfig.jsにコピーして、実際のAPIキーを設定してください
+const CONFIG = {
+  // APIキー（実際の使用時は環境変数や安全な方法で管理してください）
+  YOUTUBE_API_KEY: 'YOUR_YOUTUBE_API_KEY_HERE',
+  GEMINI_API_KEY: 'YOUR_GEMINI_API_KEY_HERE',
+  
+  // Gemini設定
+  GEMINI_MODEL: 'gemini-2.5-flash', // 高速処理用モデル
+  GEMINI_API_URL: 'https://generativelanguage.googleapis.com/v1beta/models/',
+  
+  // YouTube API設定
+  YOUTUBE_API_URL: 'https://www.googleapis.com/youtube/v3/',
+  
+  // アプリケーション設定
+  MAX_COMMENTS_PER_BATCH: 50,
+  CACHE_DURATION_HOURS: 24,
+  UPDATE_INTERVAL_MS: 30000, // 30秒ごとに更新
+  
+  // UI設定
+  PANEL_WIDTH: 350,
+  ANIMATION_DURATION_MS: 300,
+  
+  // 薬機法対応
+  DISCLAIMER_TEXT: `このツールは医療情報の整理を支援するものであり、
+医療行為や診断を行うものではありません。
+健康に関する判断は必ず医師にご相談ください。
+緊急時は迷わず119番通報してください。`,
+  
+  // Cloud Functions設定
+  CLOUD_FUNCTIONS_URL: 'https://asia-northeast1-mindstream-ai-hackathon.cloudfunctions.net/mindstream-api',
+  USE_CLOUD_CACHE: true // Cloud Functionsキャッシュを使用するかどうか
+};
+
+// 設定をエクスポート
+export default CONFIG;
