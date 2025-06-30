@@ -1,6 +1,6 @@
-import functions from '@google-cloud/functions-framework';
-import { Firestore } from '@google-cloud/firestore';
-import cors from 'cors';
+const functions = require('@google-cloud/functions-framework');
+const { Firestore } = require('@google-cloud/firestore');
+const cors = require('cors');
 
 // Firestoreインスタンスの初期化
 const firestore = new Firestore({
